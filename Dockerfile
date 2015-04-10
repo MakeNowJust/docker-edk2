@@ -26,7 +26,8 @@ ENV HOME /home/edk2
 WORKDIR $HOME
 
 # get and build EDK2 SDK
-RUN git clone git://github.com/tianocore/edk2.git $HOME/edk2
+ADD /edk2 $HOME/edk2
+RUN sudo chown edk2:edk2 -R $HOME/edk2
 RUN cd $HOME/edk2 && make -C BaseTools
 
 # execute bash
